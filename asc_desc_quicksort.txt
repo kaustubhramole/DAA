@@ -1,0 +1,205 @@
+/* Assignment 20:- Program for Ascending Quick Sort. Lab:DAA */
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+int n,a[1000];
+class q_sort
+{
+public:
+void get();
+void put();
+void quick_sort(int,int);
+int partition(int,int);
+};
+void q_sort::get()
+{
+cout<<"\n Enter the Size Of Array := ";
+cin>>n;
+ for(int i=1;i<=n;i++)
+ {
+ a[i]=random(2000);
+ }
+}
+void q_sort::put()
+{
+for(int i=1;i<=n;i++)
+{
+ if(i%8==0)
+ cout<<"\n";
+ cout<<a[i]<<"\t";
+}
+}
+void q_sort::quick_sort(int p,int q)
+{
+int j;
+if(p<q)
+{
+ j=partition(p,q);
+ quick_sort(p,j-1);
+ quick_sort(j+1,q);
+}
+}
+int q_sort::partition(int m,int p)
+{
+int v=a[m];
+int i=m+1;
+int j=p;
+while(i<=j)
+{
+ while(a[i]<=v)
+ i=i+1;
+48
+ while(a[j]>=v)
+ j=j-1;
+ if(i<j)
+ {
+ p=a[i];
+ a[i]=a[j];
+ a[j]=p;
+ }
+}
+a[m]=a[j];
+a[j]=v;
+return j;
+}
+void main()
+{
+clrscr();
+clock_t e,s;
+q_sort q;
+cout<<"\n.... Program For Ascending Quick Sort ......\n\n";
+q.get();
+cout<<"\n Display the element of array before sort :=\n\n";
+q.put();
+s=clock();
+q.quick_sort(1,n);
+e=clock();
+cout<<"\n Display the element of array before sort :=\n";
+q.put();
+cout<<"\n The time Complexity :="<<(e-s)/CLK_TCK;
+getch();
+}
+
+
+/*OUTPUT :-
+.... Program For Ascending Quick Sort ...... 
+ 
+Enter the Size Of Array := 10 
+ 
+Display the element of array before sort := 
+ 
+21 7 670 66 711 434 1073 
+391 1400 1899 
+Display the element of array before sort := 
+7 21 66 391 434 670 1073 
+711 1400 1899 
+The time Complexity :=0 
+*/
+49
+
+
+
+/* Assignment 20:- Program for Descending Quick Sort. Lab:DAA */
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+int n,a[1000];
+class q_sort
+{
+public:
+void get();
+void put();
+void quick_sort(int,int);
+int partition(int,int);
+};
+void q_sort::get()
+{
+cout<<"\n Enter the Size Of Array := ";
+cin>>n;
+ for(int i=1;i<=n;i++)
+ {
+ a[i]=random(2000);
+ }
+}
+void q_sort::put()
+{
+for(int i=1;i<=n;i++)
+{
+ if(i%8==0)
+ cout<<"\n";
+ cout<<a[i]<<"\t";
+}
+}
+void q_sort::quick_sort(int p,int q)
+{
+int j;
+if(p<q)
+{
+ j=partition(p,q);
+ quick_sort(p,j-1);
+ quick_sort(j+1,q);
+}
+}
+int q_sort::partition(int m,int p)
+{
+int v=a[m];
+int i=m+1;
+int j=p;
+while(i<=j)
+{
+ while(a[i]>=v)
+ i=i+1;
+50
+ while(a[j]<=v)
+ j=j-1;
+ if(i<j)
+ {
+ p=a[i];
+ a[i]=a[j];
+ a[j]=p;
+ }
+}
+a[m]=a[j];
+a[j]=v;
+return j;
+}
+void main()
+{
+clrscr();
+clock_t e,s;
+q_sort q;
+cout<<"\n.... Program For Descending Quick Sort ......\n\n";
+q.get();
+cout<<"\n Display the element of array before sort :=\n\n";
+q.put();
+s=clock();
+q.quick_sort(1,n);
+e=clock();
+cout<<"\n Display the element of array before sort :=\n";
+q.put();
+cout<<"\n The time Complexity :="<<(e-s)/CLK_TCK;
+getch();
+}
+
+
+
+/*OUTPUT :-
+.... Program For Descending Quick Sort ...... 
+ 
+ 
+Enter the Size Of Array := 10 
+ 
+Display the element of array before sort := 
+ 
+21 7 670 66 711 434 1073 
+391 1400 1899 
+Display the element of array before sort := 
+1899 1400 1073 670 711 434 391 
+66 21 7 
+The time Complexity :=0 
+*
